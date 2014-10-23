@@ -76,29 +76,32 @@ int Sort<T>::partition(T** items, int first, int last, int (*compare) (T* one, T
    //DO THIS
    //complete the partition method (Lomuto partition)
 
+
    //temp is used to swap elements in the array
    T* temp; 
+
 
    //initially, choosePivot does nothing           
    choosePivot(items, first, last); 
 
+   int lastS1 = first;
 
+   for(int i = first; i < last; i++)
+   {
+      if (*compare(items[first], items[i]) < 0)
+         {
+            lastS1++;
+            temp = items[i];
+            items[i] = items[lastS1];
+            items[lastS1] = temp;
+         }
+   }
 
+   temp = items[first];
+   items[first] = items[LastS1];
+   items[LastS1] = temp;
 
-
-
-
-
-
-
-
-
-
-
-
-
-     
-
+   return LastS1;
 }
 
 template < class T >
