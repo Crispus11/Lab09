@@ -44,7 +44,7 @@ T** Sort<T>::quickSort(T** items, int numItems, int (*compare) (T* one, T* two))
       temp[i] = items[i];
    }
 
-   _quickSort(items, 0, numItems - 1, (*compare) (T* one, T* two);
+   _quickSort(temp, 0, numItems - 1, compare);
 
    return temp;
 
@@ -60,12 +60,12 @@ void Sort<T>::_quickSort(T** items, int first, int last, int (*compare) (T* one,
    if (first < last)
    {
 
-      pivotIndex = partition(items, first, last, (*compare) (T* one, T* two));
+      pivotIndex = partition(items, first, last, compare);
 
-      _quickSort(items, first, pivotIndex - 1, (*compare) (T* one, T* two));
-      _quickSort(items, pivotIndex + 1, last, (*compare) (T* one, T* two));
+      _quickSort(items, first, pivotIndex - 1, compare);
+      _quickSort(items, pivotIndex + 1, last, compare);
 
-   }  
+   }    
 }  
 
 template < class T >
@@ -82,9 +82,9 @@ int Sort<T>::partition(T** items, int first, int last, int (*compare) (T* one, T
 
    int lastS1 = first;
   
-   for(int i = first; i < last; i++)
+   for(int i = first + 1; i <= last; i++)
    {
-      int comp = (*compare)(items[first], items[i]);
+      int comp = (*compare)( items[i], items[first]);
 
       if(comp < 0)
       {
@@ -109,10 +109,10 @@ void Sort<T>::choosePivot(T** items, int first, int last)
    //find a better item to be the partition than simply using the item in the first index
    //you will need to swap
 
-   int mid = (first + last) / 2;
+   int mid = first + ((last - first) / 2);
 
-   T* temp = items[0];
-   items[0] = items[mid];
+   T* temp = items[first];
+   items[first] = items[mid];
    items[mid] = temp;
 
 
