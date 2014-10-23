@@ -80,13 +80,13 @@ int Sort<T>::partition(T** items, int first, int last, int (*compare) (T* one, T
    //initially, choosePivot does nothing           
    choosePivot(items, first, last); 
 
-   int LastS1 = first;
+   int lastS1 = first;
   
    for(int i = first; i < last; i++)
    {
-      int compare = (*compare) (items[first], items[i]);
+      int comp = (*compare)(items[first], items[i]);
 
-      if(compare < 0)
+      if(comp < 0)
       {
          lastS1++;
          temp = items[i];
