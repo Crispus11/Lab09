@@ -44,7 +44,7 @@ T** Sort<T>::quickSort(T** items, int numItems, int (*compare) (T* one, T* two))
       temp[i] = items[i];
    }
 
-   _quickSort(items, 0, numItems - 1, (*compare) (T* one, T* two);
+   _quickSort(items, 0, numItems - 1, (compare));
 
    return temp;
 
@@ -60,10 +60,10 @@ void Sort<T>::_quickSort(T** items, int first, int last, int (*compare) (T* one,
    if (first < last)
    {
 
-      pivotIndex = partition(items, first, last, (*compare) (T* one, T* two));
+      pivotIndex = partition(items, first, last, (compare));
 
-      _quickSort(items, first, pivotIndex - 1, (*compare) (T* one, T* two));
-      _quickSort(items, pivotIndex + 1, last, (*compare) (T* one, T* two));
+      _quickSort(items, first, pivotIndex - 1, (compare));
+      _quickSort(items, pivotIndex + 1, last, (compare));
 
    }  
 }  
@@ -84,7 +84,7 @@ int Sort<T>::partition(T** items, int first, int last, int (*compare) (T* one, T
   
    for(int i = first; i < last; i++)
    {
-      int compare = (*compare) (items[first], items[i]);
+      int compare = (compare) (items[first], items[i]);
 
       if(compare < 0)
       {
